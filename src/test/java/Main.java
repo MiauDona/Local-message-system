@@ -1,5 +1,3 @@
-package miau.dona.IdeasdeProyecto;
-
 import javax.swing.*;
 import java.io.*;
 import java.net.*;
@@ -36,7 +34,7 @@ public class Main {
                 clientSocket.close();
                 serverSocket.close();
             } catch (IOException e) {
-                System.out.println(e);
+                e.printStackTrace();
             }
         });
         serverThread.start();
