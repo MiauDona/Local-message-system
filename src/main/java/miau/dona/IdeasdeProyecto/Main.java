@@ -11,11 +11,11 @@ public class Main {
             try {
                 // Create a server socket and bind it to a specific port
                 ServerSocket serverSocket = new ServerSocket(38528);
-                JOptionPane.showInputDialog(null, "Conexión abierta, esperando al cliente", "Esperando al cliente", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Connection opened, waiting for the client", "Waiting...", JOptionPane.PLAIN_MESSAGE);
 
                 // Listen for incoming client connections
                 Socket clientSocket = serverSocket.accept();
-                JOptionPane.showInputDialog(null, "Cliente conectado desde: " + clientSocket.getInetAddress().getHostAddress(), "Esperando al cliente", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Client from " + clientSocket.getInetAddress().getHostAddress() + "has connected", "Connection successful", JOptionPane.PLAIN_MESSAGE);
 
                 // Create input and output streams for communication
                 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -36,7 +36,7 @@ public class Main {
                 clientSocket.close();
                 serverSocket.close();
             } catch (IOException e) {
-                System.out.println(e);
+                System.out.println("An error has occurred serverside");
             }
         });
         serverThread.start();
@@ -68,7 +68,7 @@ public class Main {
                 out.close();
                 socket.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("An error occurred clientside");
             }
         });
         clientThread.start();
